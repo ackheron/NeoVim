@@ -39,4 +39,50 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position"
 -- Quick config editing
 vim.keymap.set("n", "<leader>rc", "<Cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 
+-- ================================================================================================
+-- DELETE WITHOUT YANKING (send to black hole register)
+-- ================================================================================================
+
+-- Character deletion
+vim.keymap.set("n", "x", '"_x', { desc = "Delete character without yanking" })
+vim.keymap.set("n", "X", '"_X', { desc = "Delete character backward without yanking" })
+
+-- Line deletion
+vim.keymap.set("n", "dd", '"_dd', { desc = "Delete line without yanking" })
+vim.keymap.set("n", "D", '"_D', { desc = "Delete to end of line without yanking" })
+
+-- Word deletion
+vim.keymap.set("n", "dw", '"_dw', { desc = "Delete word without yanking" })
+vim.keymap.set("n", "dW", '"_dW', { desc = "Delete WORD without yanking" })
+vim.keymap.set("n", "db", '"_db', { desc = "Delete word backward without yanking" })
+vim.keymap.set("n", "dB", '"_dB', { desc = "Delete WORD backward without yanking" })
+
+-- Visual mode deletion
+vim.keymap.set("v", "d", '"_d', { desc = "Delete selection without yanking" })
+vim.keymap.set("v", "D", '"_D', { desc = "Delete selection without yanking" })
+vim.keymap.set("v", "x", '"_x', { desc = "Delete selection without yanking" })
+
+-- Change operations (delete and enter insert mode)
+vim.keymap.set("n", "c", '"_c', { desc = "Change without yanking" })
+vim.keymap.set("n", "C", '"_C', { desc = "Change to end of line without yanking" })
+vim.keymap.set("n", "cc", '"_cc', { desc = "Change line without yanking" })
+vim.keymap.set("v", "c", '"_c', { desc = "Change selection without yanking" })
+
+-- Text objects (optionnel, selon tes besoins)
+vim.keymap.set("n", "diw", '"_diw', { desc = "Delete inner word without yanking" })
+vim.keymap.set("n", "daw", '"_daw', { desc = "Delete around word without yanking" })
+vim.keymap.set("n", "di(", '"_di(', { desc = "Delete inner parentheses without yanking" })
+vim.keymap.set("n", "da(", '"_da(', { desc = "Delete around parentheses without yanking" })
+
+-- ============================================================================================
+-- KEYMAPS POUR MINI.TRAILSPACE - Gestion des espaces en fin de ligne
+-- ============================================================================================
+
+-- 🧹 NETTOYAGE MANUEL
+-- Supprime tous les trailing spaces du buffer courant
+vim.keymap.set('n', '<leader>ts', '<cmd>lua MiniTrailspace.trim()<CR>', {
+  desc = 'Trim trailing spaces',
+  silent = true
+})
+
 
