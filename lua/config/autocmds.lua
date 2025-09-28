@@ -16,14 +16,17 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
--- Highlight the yanked text for 200ms
+-- Créer un groupe de highlight personnalisé pour le yank
+vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#d8a657", fg = "#282828" }) -- Jaune gruvbox-material
+
+-- Highlight the yanked text for 500ms
 local highlight_yank_group = vim.api.nvim_create_augroup("HighlightYank", {})
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_yank_group,
 	pattern = "*",
 	callback = function()
 		vim.hl.on_yank({
-			higroup = "IncSearch",
+			higroup = "YankHighlight",
 			timeout = 500,
 		})
 	end,
