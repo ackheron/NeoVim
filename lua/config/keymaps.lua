@@ -74,4 +74,15 @@ vim.keymap.set("n", "daw", '"_daw', { desc = "Delete around word without yanking
 vim.keymap.set("n", "di(", '"_di(', { desc = "Delete inner parentheses without yanking" })
 vim.keymap.set("n", "da(", '"_da(', { desc = "Delete around parentheses without yanking" })
 
+-- ============================================================================================
+-- KEYMAPS POUR MINI.TRAILSPACE - Gestion des espaces en fin de ligne
+-- ============================================================================================
+
+-- 🧹 NETTOYAGE MANUEL
+-- Supprime tous les trailing spaces du buffer courant
+vim.keymap.set('n', '<leader>ts', '<cmd>lua MiniTrailspace.trim()<CR>', {
+  desc = 'Trim trailing spaces',
+  silent = true
+})
+
 
